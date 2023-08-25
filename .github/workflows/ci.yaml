@@ -41,6 +41,7 @@ jobs:
           kubectl apply -f simple-count-app/manifests/count.yaml
           sudo chmod +x attack.sh
           ./attack.sh boutique
+          sleep 120
 
       - name: Generate Report
         uses: accuknox/report-action@v0.1.1
