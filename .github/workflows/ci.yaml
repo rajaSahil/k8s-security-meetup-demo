@@ -1,0 +1,39 @@
+name: Runtime-Risks
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  Runtime-Risks:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          
+      - name: Checkout kubearmor repo
+        uses: actions/checkout@v3
+        with:
+          repository: kubearmor/KubeArmor
+          ref: main
+          path: Kubearmor
+
+      - name: Setup a Kubernetes environment
+        run: |
+          ./Kubearmor/contribution/k3s/install_k3s.sh
+           sudo apt install socat
+        
+      - name: Install accuknoxcli, KubeArmor and Discovery Engine
+        uses: accuknox/install-action@v0.1.1
+
+
+      - name: Generate Report
+        uses: accuknox/report-action@v0.1.1
