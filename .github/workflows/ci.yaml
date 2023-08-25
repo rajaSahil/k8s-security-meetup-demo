@@ -34,6 +34,11 @@ jobs:
       - name: Install accuknoxcli, KubeArmor and Discovery Engine
         uses: accuknox/install-action@v0.1.1
 
+      - name: e2e-tests
+        run: |
+          kubectl apply -f simplecount-app/manifests/cache.yaml
+          kubectl apply -f simplecount-app/manifests/count.yaml
+
 
       - name: Generate Report
         uses: accuknox/report-action@v0.1.1
