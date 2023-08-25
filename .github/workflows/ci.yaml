@@ -36,9 +36,8 @@ jobs:
 
       - name: e2e-tests
         run: |
-          ls
-          kubectl apply -f simplecount-app/manifests/cache.yaml
-          kubectl apply -f simplecount-app/manifests/count.yaml
+          kubectl apply -f simple-count-app/manifests/cache.yaml
+          kubectl apply -f simple-count-app/manifests/count.yaml
 
 
       - name: Generate Report
