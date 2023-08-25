@@ -36,9 +36,9 @@ jobs:
 
       - name: e2e-tests
         run: |
+          sleep 120
           kubectl apply -f simple-count-app/manifests/cache.yaml
           kubectl apply -f simple-count-app/manifests/count.yaml
-
 
       - name: Generate Report
         uses: accuknox/report-action@v0.1.1
