@@ -34,6 +34,10 @@ jobs:
       - name: Install accuknoxcli, KubeArmor and Discovery Engine
         uses: accuknox/install-action@v0.1.1
 
+      - name: E2E tests
+        run: |
+          sudo chmod +x e2e.sh
+          ./e2e.sh boutique
 
       - name: Generate Report
-        uses: accuknox/report-action@v0.1.1
+        uses: accuknox/report-action@v0.1.2
